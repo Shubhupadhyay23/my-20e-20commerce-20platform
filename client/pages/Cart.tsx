@@ -39,6 +39,7 @@ const SAMPLE_CART_ITEMS: CartItem[] = [
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>(SAMPLE_CART_ITEMS);
   const [cartCount] = useState(cartItems.reduce((sum, item) => sum + item.quantity, 0));
+  const { ref: cartRef, isInView } = useScrollAnimation();
 
   const handleUpdateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity <= 0) {
