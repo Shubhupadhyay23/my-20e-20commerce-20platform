@@ -92,7 +92,13 @@ export default function ProductPage() {
       </div>
 
       {/* Product Section */}
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+      <motion.div
+        ref={detailsRef.ref}
+        initial="hidden"
+        animate={detailsRef.isInView ? "visible" : "hidden"}
+        variants={fadeInUpVariants}
+        className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-20">
           {/* Product Images */}
           <div className="space-y-4">
@@ -297,22 +303,39 @@ export default function ProductPage() {
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="border-t pt-16">
+          <motion.div
+            ref={relatedRef.ref}
+            initial="hidden"
+            animate={relatedRef.isInView ? "visible" : "hidden"}
+            variants={fadeInUpVariants}
+            className="border-t pt-16"
+          >
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
               Related Products
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={relatedRef.isInView ? "visible" : "hidden"}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
               {relatedProducts.map((relatedProduct) => (
-                <ProductCard
+                <motion.div
                   key={relatedProduct.id}
-                  product={relatedProduct}
-                  onAddToCart={() => setCartCount(cartCount + 1)}
-                />
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProductCard
+                    product={relatedProduct}
+                    onAddToCart={() => setCartCount(cartCount + 1)}
+                  />
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
 
       <Footer />
     </div>
