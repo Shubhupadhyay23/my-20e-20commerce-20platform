@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Trash2, Plus, Minus, ArrowRight } from "lucide-react";
+import {
+  useScrollAnimation,
+  containerVariants,
+  itemVariants,
+} from "@/hooks/use-scroll-animation";
 
 interface CartItem {
   id: string;
