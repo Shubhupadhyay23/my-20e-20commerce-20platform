@@ -23,6 +23,9 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
+  const detailsRef = useScrollAnimation();
+  const specsRef = useScrollAnimation();
+  const relatedRef = useScrollAnimation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
