@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -16,6 +17,11 @@ import { Slider } from "@/components/ui/slider";
 import { X } from "lucide-react";
 import { products, categories } from "@/lib/products";
 import { cn } from "@/lib/utils";
+import {
+  useScrollAnimation,
+  containerVariants,
+  itemVariants,
+} from "@/hooks/use-scroll-animation";
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
