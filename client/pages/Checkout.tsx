@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Lock, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { fadeInUpVariants, containerVariants, itemVariants } from "@/hooks/use-scroll-animation";
 
 interface CheckoutData {
   firstName: string;
