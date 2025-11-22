@@ -33,6 +33,7 @@ export default function ProductsPage() {
   );
   const [sortBy, setSortBy] = useState("featured");
   const [searchQuery, setSearchQuery] = useState("");
+  const { ref: productsRef, isInView } = useScrollAnimation();
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = products.filter((product) => {
