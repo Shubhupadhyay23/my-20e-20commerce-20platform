@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -7,11 +8,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Zap, TrendingUp, Award } from "lucide-react";
 import { getFeaturedProducts, categories } from "@/lib/products";
+import {
+  useScrollAnimation,
+  fadeInUpVariants,
+  fadeInVariants,
+  containerVariants,
+  itemVariants,
+} from "@/hooks/use-scroll-animation";
 
 export default function Index() {
   const [cartCount, setCartCount] = useState(0);
   const [email, setEmail] = useState("");
   const featuredProducts = getFeaturedProducts();
+
+  const heroRef = useScrollAnimation();
+  const categoriesRef = useScrollAnimation();
+  const productsRef = useScrollAnimation();
+  const trustRef = useScrollAnimation();
+  const newsletterRef = useScrollAnimation();
 
   const handleAddToCart = () => {
     setCartCount(cartCount + 1);
@@ -24,205 +38,325 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col overflow-hidden">
       <Header cartCount={cartCount} />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 lg:py-32">
+      <motion.section
+        ref={heroRef.ref}
+        initial="hidden"
+        animate={heroRef.isInView ? "visible" : "hidden"}
+        variants={fadeInVariants}
+        className="relative bg-gradient-to-b from-gray-50 to-white pt-20 lg:pt-32 pb-20 lg:pb-40"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
-            <div className="space-y-6">
-              <div className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-                <span className="text-sm font-semibold">✨ New Collection Available</span>
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
-                Premium Tech Products for Modern Living
-              </h1>
-              <p className="text-lg text-blue-100">
-                Discover the latest in electronics, audio, and accessories. Premium quality at unbeatable prices.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={heroRef.isInView ? "visible" : "hidden"}
+              className="space-y-8"
+            >
+              <motion.h1
+                variants={itemVariants}
+                className="text-5xl lg:text-7xl font-bold leading-tight text-gray-900"
+              >
+                Experience Technology
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-lg"
+              >
+                Discover our curated collection of premium tech products designed for the modern lifestyle.
+              </motion.p>
+
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col sm:flex-row gap-4 pt-4"
+              >
                 <Link to="/products">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                    Shop Now
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                  <Button size="lg" className="bg-black text-white hover:bg-gray-800 text-base">
+                    Explore Now
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10"
-                >
-                  View Collections
-                </Button>
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/20">
-                <div>
-                  <p className="text-2xl font-bold">50K+</p>
-                  <p className="text-blue-100 text-sm">Happy Customers</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">1000+</p>
-                  <p className="text-blue-100 text-sm">Products</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold">24/7</p>
-                  <p className="text-blue-100 text-sm">Support</p>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Image */}
-            <div className="relative hidden lg:block">
-              <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+            <motion.div
+              variants={itemVariants}
+              className="relative hidden lg:block"
+            >
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=600&fit=crop"
-                  alt="Hero"
-                  className="w-full h-auto"
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=700&fit=crop"
+                  alt="Premium Tech"
+                  className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-blue-400/20 rounded-full blur-3xl"></div>
-              <div className="absolute -top-4 -left-4 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl"></div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Categories */}
-      <section className="py-16 bg-gray-50">
+      <motion.section
+        ref={categoriesRef.ref}
+        initial="hidden"
+        animate={categoriesRef.isInView ? "visible" : "hidden"}
+        variants={fadeInUpVariants}
+        className="py-24 lg:py-32 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Shop by Category
-            </h2>
-            <p className="text-lg text-gray-600">
-              Explore our wide selection of premium products
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                to={`/products?category=${category.id}`}
-                className="group bg-white rounded-lg p-6 hover:shadow-lg transition-all duration-300 text-center"
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={categoriesRef.isInView ? "visible" : "hidden"}
+            className="space-y-16"
+          >
+            {/* Section Header */}
+            <div className="space-y-4">
+              <motion.h2
+                variants={itemVariants}
+                className="text-4xl lg:text-5xl font-bold text-gray-900"
               >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {category.icon}
-                </div>
-                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                  {category.name}
-                </h3>
-              </Link>
-            ))}
-          </div>
+                Shop by Category
+              </motion.h2>
+              <motion.p
+                variants={itemVariants}
+                className="text-lg text-gray-600"
+              >
+                Explore our collections
+              </motion.p>
+            </div>
+
+            {/* Categories Grid */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={categoriesRef.isInView ? "visible" : "hidden"}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            >
+              {categories.map((category) => (
+                <motion.div
+                  key={category.id}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to={`/products?category=${category.id}`}
+                    className="group block"
+                  >
+                    <div className="bg-gray-50 rounded-2xl p-8 hover:bg-gray-100 transition-colors duration-300 text-center h-full flex flex-col items-center justify-center space-y-4">
+                      <div className="text-5xl group-hover:scale-110 transition-transform duration-300">
+                        {category.icon}
+                      </div>
+                      <h3 className="font-semibold text-gray-900 text-base">
+                        {category.name}
+                      </h3>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Products */}
-      <section className="py-16">
+      <motion.section
+        ref={productsRef.ref}
+        initial="hidden"
+        animate={productsRef.isInView ? "visible" : "hidden"}
+        variants={fadeInUpVariants}
+        className="py-24 lg:py-32 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                Featured Products
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Check out our latest and most popular items
-              </p>
-            </div>
-            <Link
-              to="/products"
-              className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2"
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={productsRef.isInView ? "visible" : "hidden"}
+            className="space-y-16"
+          >
+            {/* Section Header */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center justify-between"
             >
-              View All
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+              <div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
+                  Featured
+                </h2>
+                <p className="text-lg text-gray-600 mt-2">
+                  Our best-selling products
+                </p>
+              </div>
+              <Link
+                to="/products"
+                className="text-gray-900 hover:text-blue-600 font-semibold flex items-center gap-2 text-lg"
+              >
+                View All
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
-          </div>
+            {/* Products Grid */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={productsRef.isInView ? "visible" : "hidden"}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            >
+              {featuredProducts.map((product) => (
+                <motion.div
+                  key={product.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ProductCard
+                    product={product}
+                    onAddToCart={handleAddToCart}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Trust Section */}
-      <section className="py-16 bg-gray-50">
+      <motion.section
+        ref={trustRef.ref}
+        initial="hidden"
+        animate={trustRef.isInView ? "visible" : "hidden"}
+        variants={fadeInUpVariants}
+        className="py-24 lg:py-32 bg-gray-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Zap,
-                title: "Fast Shipping",
-                description: "Free delivery on orders over $50",
-              },
-              {
-                icon: Award,
-                title: "Quality Guaranteed",
-                description: "All products are authentic and verified",
-              },
-              {
-                icon: TrendingUp,
-                title: "Best Prices",
-                description: "Competitive pricing with regular discounts",
-              },
-            ].map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="bg-white rounded-lg p-8 text-center">
-                  <Icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              );
-            })}
-          </div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={trustRef.isInView ? "visible" : "hidden"}
+          >
+            {/* Section Header */}
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-16"
+            >
+              Why Choose TechHub
+            </motion.h2>
+
+            {/* Features Grid */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={trustRef.isInView ? "visible" : "hidden"}
+              className="grid grid-cols-1 md:grid-cols-3 gap-12"
+            >
+              {[
+                {
+                  icon: Zap,
+                  title: "Fast Shipping",
+                  description: "Free delivery on orders over $50. Get your products quickly.",
+                },
+                {
+                  icon: Award,
+                  title: "Quality Guaranteed",
+                  description: "All products are authentic and verified by experts.",
+                },
+                {
+                  icon: TrendingUp,
+                  title: "Best Prices",
+                  description: "Competitive pricing with regular exclusive deals.",
+                },
+              ].map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.02 }}
+                    className="bg-white rounded-2xl p-8 space-y-4 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <Icon className="w-12 h-12 text-blue-600" />
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <motion.section
+        ref={newsletterRef.ref}
+        initial="hidden"
+        animate={newsletterRef.isInView ? "visible" : "hidden"}
+        variants={fadeInUpVariants}
+        className="py-24 lg:py-32 bg-black text-white"
+      >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Stay Updated with Latest Tech
-          </h2>
-          <p className="text-lg text-blue-100 mb-8">
-            Subscribe to our newsletter for exclusive deals and new product launches
-          </p>
-
-          <form onSubmit={handleNewsletterSignup} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="bg-white text-gray-900 placeholder-gray-500 border-0"
-            />
-            <Button
-              type="submit"
-              className="bg-white text-blue-600 hover:bg-gray-100"
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={newsletterRef.isInView ? "visible" : "hidden"}
+            className="space-y-8"
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl lg:text-5xl font-bold"
             >
-              Subscribe
-            </Button>
-          </form>
+              Stay Updated
+            </motion.h2>
 
-          <p className="text-blue-100 text-sm mt-4">
-            We'll never share your email. Unsubscribe anytime.
-          </p>
+            <motion.p
+              variants={itemVariants}
+              className="text-xl text-gray-300"
+            >
+              Get the latest tech news and exclusive offers delivered to your inbox.
+            </motion.p>
+
+            <motion.form
+              variants={itemVariants}
+              onSubmit={handleNewsletterSignup}
+              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            >
+              <Input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="bg-white/10 text-white placeholder-gray-400 border-white/20 rounded-lg"
+              />
+              <Button
+                type="submit"
+                className="bg-white text-black hover:bg-gray-100 whitespace-nowrap"
+              >
+                Subscribe
+              </Button>
+            </motion.form>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-gray-400 text-sm"
+            >
+              We respect your privacy. Unsubscribe anytime.
+            </motion.p>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       <Footer />
     </div>
