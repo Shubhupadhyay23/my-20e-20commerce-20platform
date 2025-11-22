@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -8,6 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Heart, Share2, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 import { getProductById, products, Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
+import {
+  useScrollAnimation,
+  fadeInUpVariants,
+  containerVariants,
+  itemVariants,
+} from "@/hooks/use-scroll-animation";
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
