@@ -83,10 +83,17 @@ export default function CartPage() {
         {cartItems.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
-            <div className="lg:col-span-2 space-y-4">
+            <motion.div
+              ref={cartRef}
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="lg:col-span-2 space-y-4"
+            >
               {cartItems.map((item) => (
-                <div
+                <motion.div
                   key={item.id}
+                  variants={itemVariants}
                   className="flex gap-4 py-4 border-b border-gray-200"
                 >
                   {/* Item Image */}
@@ -149,9 +156,9 @@ export default function CartPage() {
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Order Summary */}
             <div className="bg-gray-50 rounded-lg p-6 h-fit sticky top-20">
