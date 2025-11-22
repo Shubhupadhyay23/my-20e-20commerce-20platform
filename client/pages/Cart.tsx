@@ -25,20 +25,24 @@ const SAMPLE_CART_ITEMS: CartItem[] = [
     name: "Premium Wireless Headphones",
     price: 199,
     quantity: 1,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop",
   },
   {
     id: "4",
     name: "4K Webcam",
     price: 159,
     quantity: 2,
-    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=200&h=200&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=200&h=200&fit=crop",
   },
 ];
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>(SAMPLE_CART_ITEMS);
-  const [cartCount] = useState(cartItems.reduce((sum, item) => sum + item.quantity, 0));
+  const [cartCount] = useState(
+    cartItems.reduce((sum, item) => sum + item.quantity, 0),
+  );
   const { ref: cartRef, isInView } = useScrollAnimation();
 
   const handleUpdateQuantity = (id: string, newQuantity: number) => {
@@ -47,8 +51,8 @@ export default function CartPage() {
     } else {
       setCartItems(
         cartItems.map((item) =>
-          item.id === id ? { ...item, quantity: newQuantity } : item
-        )
+          item.id === id ? { ...item, quantity: newQuantity } : item,
+        ),
       );
     }
   };
@@ -59,7 +63,7 @@ export default function CartPage() {
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
   const shipping = subtotal > 50 ? 0 : 10;
   const tax = subtotal * 0.1;
@@ -76,7 +80,8 @@ export default function CartPage() {
             Shopping Cart
           </h1>
           <p className="text-gray-600 mt-2">
-            {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in your cart
+            {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in your
+            cart
           </p>
         </div>
 

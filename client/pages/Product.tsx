@@ -6,7 +6,15 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Heart, Share2, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Heart,
+  Share2,
+  Truck,
+  Shield,
+  RotateCcw,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { getProductById, products, Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 import {
@@ -37,8 +45,13 @@ export default function ProductPage() {
         <Header cartCount={cartCount} />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900">Product not found</h1>
-            <Link to="/" className="text-blue-600 hover:text-blue-700 mt-4 inline-block">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Product not found
+            </h1>
+            <Link
+              to="/"
+              className="text-blue-600 hover:text-blue-700 mt-4 inline-block"
+            >
               Return to home
             </Link>
           </div>
@@ -55,11 +68,13 @@ export default function ProductPage() {
   };
 
   const relatedProducts = products.filter(
-    (p) => p.category === product.category && p.id !== product.id
+    (p) => p.category === product.category && p.id !== product.id,
   );
 
   const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    ? Math.round(
+        ((product.originalPrice - product.price) / product.originalPrice) * 100,
+      )
     : 0;
 
   const nextImage = () => {
@@ -68,7 +83,7 @@ export default function ProductPage() {
 
   const prevImage = () => {
     setSelectedImage((prev) =>
-      prev === 0 ? product.images.length - 1 : prev - 1
+      prev === 0 ? product.images.length - 1 : prev - 1,
     );
   };
 
@@ -146,7 +161,7 @@ export default function ProductPage() {
                       "w-20 h-20 rounded-lg overflow-hidden border-2 transition-all",
                       selectedImage === index
                         ? "border-blue-600"
-                        : "border-gray-200 hover:border-gray-300"
+                        : "border-gray-200 hover:border-gray-300",
                     )}
                   >
                     <img
@@ -177,7 +192,11 @@ export default function ProductPage() {
                   {[...Array(5)].map((_, i) => (
                     <span
                       key={i}
-                      className={i < Math.floor(product.rating) ? "text-yellow-400" : "text-gray-300"}
+                      className={
+                        i < Math.floor(product.rating)
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }
                     >
                       ★
                     </span>
@@ -192,7 +211,9 @@ export default function ProductPage() {
             {/* Price */}
             <div className="space-y-3">
               <div className="flex items-center gap-4">
-                <span className="text-4xl font-bold text-gray-900">${product.price}</span>
+                <span className="text-4xl font-bold text-gray-900">
+                  ${product.price}
+                </span>
                 {product.originalPrice && (
                   <>
                     <span className="text-xl text-gray-500 line-through">
@@ -221,7 +242,9 @@ export default function ProductPage() {
                 {product.specs.map((spec, index) => (
                   <div key={index} className="flex justify-between">
                     <span className="text-gray-600">{spec.label}</span>
-                    <span className="font-medium text-gray-900">{spec.value}</span>
+                    <span className="font-medium text-gray-900">
+                      {spec.value}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -292,7 +315,9 @@ export default function ProductPage() {
                     <Icon className="w-5 h-5 text-blue-600 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900">{badge.title}</p>
-                      <p className="text-sm text-gray-600">{badge.description}</p>
+                      <p className="text-sm text-gray-600">
+                        {badge.description}
+                      </p>
                     </div>
                   </div>
                 );

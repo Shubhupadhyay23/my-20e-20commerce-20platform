@@ -29,7 +29,7 @@ export default function ProductsPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
-    searchParams.get("category") ? [searchParams.get("category")!] : []
+    searchParams.get("category") ? [searchParams.get("category")!] : [],
   );
   const [sortBy, setSortBy] = useState("featured");
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,7 +42,7 @@ export default function ProductsPage() {
       const matchesCategory =
         selectedCategories.length === 0 ||
         selectedCategories.some(
-          (cat) => product.category.toLowerCase() === cat.toLowerCase()
+          (cat) => product.category.toLowerCase() === cat.toLowerCase(),
         );
       const matchesSearch = product.name
         .toLowerCase()
@@ -69,7 +69,7 @@ export default function ProductsPage() {
     setSelectedCategories((prev) =>
       prev.includes(category)
         ? prev.filter((c) => c !== category)
-        : [...prev, category]
+        : [...prev, category],
     );
   };
 
@@ -119,7 +119,7 @@ export default function ProductsPage() {
               "space-y-6",
               showFilters
                 ? "block fixed inset-0 bg-white z-40 lg:static lg:bg-transparent p-4 lg:p-0 overflow-y-auto"
-                : "hidden lg:block"
+                : "hidden lg:block",
             )}
           >
             {/* Close Button for Mobile */}
@@ -213,8 +213,12 @@ export default function ProductsPage() {
                   <SelectContent>
                     <SelectItem value="featured">Featured</SelectItem>
                     <SelectItem value="newest">Newest</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    <SelectItem value="price-low">
+                      Price: Low to High
+                    </SelectItem>
+                    <SelectItem value="price-high">
+                      Price: High to Low
+                    </SelectItem>
                     <SelectItem value="rating">Top Rated</SelectItem>
                   </SelectContent>
                 </Select>
@@ -256,10 +260,7 @@ export default function ProductsPage() {
                 <p className="text-gray-600 mb-4">
                   Try adjusting your filters or search query
                 </p>
-                <Button
-                  onClick={handleClearFilters}
-                  variant="outline"
-                >
+                <Button onClick={handleClearFilters} variant="outline">
                   Clear Filters
                 </Button>
               </motion.div>

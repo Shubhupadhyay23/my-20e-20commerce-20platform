@@ -9,7 +9,11 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Lock, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { fadeInUpVariants, containerVariants, itemVariants } from "@/hooks/use-scroll-animation";
+import {
+  fadeInUpVariants,
+  containerVariants,
+  itemVariants,
+} from "@/hooks/use-scroll-animation";
 
 interface CheckoutData {
   firstName: string;
@@ -64,19 +68,20 @@ const SAMPLE_ORDER = {
 
 export default function CheckoutPage() {
   const [checkoutData, setCheckoutData] = useState<CheckoutData>(
-    INITIAL_CHECKOUT_DATA
+    INITIAL_CHECKOUT_DATA,
   );
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [currentStep, setCurrentStep] = useState("shipping");
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type } = e.target;
     setCheckoutData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -99,7 +104,8 @@ export default function CheckoutPage() {
               Order Confirmed!
             </h1>
             <p className="text-gray-600 mb-6">
-              Thank you for your purchase. Your order has been successfully placed.
+              Thank you for your purchase. Your order has been successfully
+              placed.
             </p>
             <p className="text-lg font-semibold text-gray-900 mb-4">
               Order #: 12345678
@@ -163,7 +169,11 @@ export default function CheckoutPage() {
           {/* Checkout Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-sm">
-              <Tabs value={currentStep} onValueChange={setCurrentStep} className="p-6">
+              <Tabs
+                value={currentStep}
+                onValueChange={setCurrentStep}
+                className="p-6"
+              >
                 <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="shipping" className="text-sm">
                     Shipping
@@ -299,7 +309,7 @@ export default function CheckoutPage() {
                           "border-2 rounded-lg p-4 cursor-pointer transition-all",
                           paymentMethod === method.value
                             ? "border-blue-600 bg-blue-50"
-                            : "border-gray-200 hover:border-gray-300"
+                            : "border-gray-200 hover:border-gray-300",
                         )}
                       >
                         <div className="flex items-center gap-3">

@@ -23,7 +23,9 @@ const NotFound = () => {
       <div className="flex-1 flex items-center justify-center px-4 py-20">
         <div className="text-center max-w-md">
           <div className="mb-8">
-            <h1 className="text-7xl lg:text-8xl font-bold text-gray-200">404</h1>
+            <h1 className="text-7xl lg:text-8xl font-bold text-gray-200">
+              404
+            </h1>
           </div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Page Not Found
@@ -40,9 +42,7 @@ const NotFound = () => {
               </Button>
             </Link>
             <Link to="/products">
-              <Button variant="outline">
-                Browse Products
-              </Button>
+              <Button variant="outline">Browse Products</Button>
             </Link>
           </div>
         </div>

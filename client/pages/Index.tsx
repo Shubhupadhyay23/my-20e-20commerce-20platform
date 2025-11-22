@@ -69,7 +69,8 @@ export default function Index() {
                 variants={itemVariants}
                 className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-lg"
               >
-                Discover our curated collection of premium tech products designed for the modern lifestyle.
+                Discover our curated collection of premium tech products
+                designed for the modern lifestyle.
               </motion.p>
 
               <motion.div
@@ -77,7 +78,10 @@ export default function Index() {
                 className="flex flex-col sm:flex-row gap-4 pt-4"
               >
                 <Link to="/products">
-                  <Button size="lg" className="bg-black text-white hover:bg-gray-800 text-base">
+                  <Button
+                    size="lg"
+                    className="bg-black text-white hover:bg-gray-800 text-base"
+                  >
                     Explore Now
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
@@ -262,17 +266,20 @@ export default function Index() {
                 {
                   icon: Zap,
                   title: "Fast Shipping",
-                  description: "Free delivery on orders over $50. Get your products quickly.",
+                  description:
+                    "Free delivery on orders over $50. Get your products quickly.",
                 },
                 {
                   icon: Award,
                   title: "Quality Guaranteed",
-                  description: "All products are authentic and verified by experts.",
+                  description:
+                    "All products are authentic and verified by experts.",
                 },
                 {
                   icon: TrendingUp,
                   title: "Best Prices",
-                  description: "Competitive pricing with regular exclusive deals.",
+                  description:
+                    "Competitive pricing with regular exclusive deals.",
                 },
               ].map((feature, index) => {
                 const Icon = feature.icon;
@@ -320,11 +327,9 @@ export default function Index() {
               Stay Updated
             </motion.h2>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-xl text-gray-300"
-            >
-              Get the latest tech news and exclusive offers delivered to your inbox.
+            <motion.p variants={itemVariants} className="text-xl text-gray-300">
+              Get the latest tech news and exclusive offers delivered to your
+              inbox.
             </motion.p>
 
             <motion.form
@@ -348,10 +353,7 @@ export default function Index() {
               </Button>
             </motion.form>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-400 text-sm"
-            >
+            <motion.p variants={itemVariants} className="text-gray-400 text-sm">
               We respect your privacy. Unsubscribe anytime.
             </motion.p>
           </motion.div>

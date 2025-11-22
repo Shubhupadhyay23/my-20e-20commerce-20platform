@@ -17,7 +17,9 @@ export default function ProductCard({
   variant = "grid",
 }: ProductCardProps) {
   const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+    ? Math.round(
+        ((product.originalPrice - product.price) / product.originalPrice) * 100,
+      )
     : 0;
 
   return (
@@ -26,16 +28,14 @@ export default function ProductCard({
       transition={{ duration: 0.3 }}
       className={cn(
         "group relative rounded-2xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl transition-shadow duration-300",
-        variant === "compact" && "flex gap-4"
+        variant === "compact" && "flex gap-4",
       )}
     >
       {/* Product Image */}
       <div
         className={cn(
           "relative bg-gray-50 overflow-hidden",
-          variant === "compact"
-            ? "w-24 h-24 flex-shrink-0"
-            : "aspect-square"
+          variant === "compact" ? "w-24 h-24 flex-shrink-0" : "aspect-square",
         )}
       >
         <Link to={`/product/${product.id}`}>
@@ -79,7 +79,7 @@ export default function ProductCard({
       <div
         className={cn(
           "p-5 flex flex-col",
-          variant === "compact" ? "flex-1 justify-between" : ""
+          variant === "compact" ? "flex-1 justify-between" : "",
         )}
       >
         <div>
@@ -103,7 +103,11 @@ export default function ProductCard({
             {[...Array(5)].map((_, i) => (
               <span
                 key={i}
-                className={i < Math.floor(product.rating) ? "text-yellow-400" : "text-gray-300"}
+                className={
+                  i < Math.floor(product.rating)
+                    ? "text-yellow-400"
+                    : "text-gray-300"
+                }
               >
                 ★
               </span>
@@ -114,7 +118,9 @@ export default function ProductCard({
 
         {/* Price */}
         <div className="flex items-center gap-2 mt-4">
-          <span className="font-bold text-lg text-gray-900">${product.price}</span>
+          <span className="font-bold text-lg text-gray-900">
+            ${product.price}
+          </span>
           {product.originalPrice && (
             <span className="text-sm text-gray-500 line-through">
               ${product.originalPrice}
