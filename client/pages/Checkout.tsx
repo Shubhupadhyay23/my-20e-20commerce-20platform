@@ -144,7 +144,12 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header cartCount={0} />
 
-      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 flex-1">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUpVariants}
+        className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 flex-1"
+      >
         {/* Back Button */}
         <Link
           to="/cart"
@@ -475,7 +480,7 @@ export default function CheckoutPage() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Footer />
     </div>
