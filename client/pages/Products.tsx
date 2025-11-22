@@ -223,17 +223,33 @@ export default function ProductsPage() {
 
             {/* Products Grid */}
             {filteredAndSortedProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <motion.div
+                ref={productsRef}
+                variants={containerVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
                 {filteredAndSortedProducts.map((product) => (
-                  <ProductCard
+                  <motion.div
                     key={product.id}
-                    product={product}
-                    onAddToCart={() => setCartCount(cartCount + 1)}
-                  />
+                    variants={itemVariants}
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ProductCard
+                      product={product}
+                      onAddToCart={() => setCartCount(cartCount + 1)}
+                    />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             ) : (
-              <div className="col-span-full py-12 text-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="col-span-full py-12 text-center"
+              >
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   No products found
                 </h3>
@@ -246,7 +262,7 @@ export default function ProductsPage() {
                 >
                   Clear Filters
                 </Button>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
