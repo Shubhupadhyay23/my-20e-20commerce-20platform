@@ -37,8 +37,8 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
             {[
               { id: "home", label: "Home", href: "/" },
               { id: "products", label: "Products", href: "/products" },
-              { id: "about", label: "About", href: "#" },
-              { id: "contact", label: "Contact", href: "#" },
+              { id: "about", label: "About", href: "/about" },
+              { id: "contact", label: "Contact", href: "/contact" },
             ].map((item) => (
               <motion.div
                 key={item.id}
@@ -120,8 +120,8 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
                 {[
                   { id: "home", label: "Home", href: "/" },
                   { id: "products", label: "Products", href: "/products" },
-                  { id: "about", label: "About", href: "#" },
-                  { id: "contact", label: "Contact", href: "#" },
+                  { id: "about", label: "About", href: "/about" },
+                  { id: "contact", label: "Contact", href: "/contact" },
                 ].map((item) => (
                   <Link
                     key={item.id}
