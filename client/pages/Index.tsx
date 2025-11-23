@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import AnimatedWatch from "@/components/AnimatedWatch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Zap, TrendingUp, Award } from "lucide-react";
@@ -89,18 +90,12 @@ export default function Index() {
               </motion.div>
             </motion.div>
 
-            {/* Right Image */}
+            {/* Right Image - Animated Watch */}
             <motion.div
               variants={itemVariants}
               className="relative hidden lg:block"
             >
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=700&fit=crop"
-                  alt="Premium Tech"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+              <AnimatedWatch />
             </motion.div>
           </div>
         </div>
