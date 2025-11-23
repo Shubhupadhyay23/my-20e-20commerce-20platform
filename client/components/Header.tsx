@@ -35,13 +35,13 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {[
-              { label: "Home", href: "/" },
-              { label: "Products", href: "/products" },
-              { label: "About", href: "#" },
-              { label: "Contact", href: "#" },
+              { id: "home", label: "Home", href: "/" },
+              { id: "products", label: "Products", href: "/products" },
+              { id: "about", label: "About", href: "#" },
+              { id: "contact", label: "Contact", href: "#" },
             ].map((item) => (
               <motion.div
-                key={item.href}
+                key={item.id}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
