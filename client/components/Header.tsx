@@ -118,13 +118,13 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
             >
               <nav className="flex flex-col gap-4 mt-4">
                 {[
-                  { label: "Home", href: "/" },
-                  { label: "Products", href: "/products" },
-                  { label: "About", href: "#" },
-                  { label: "Contact", href: "#" },
+                  { id: "home", label: "Home", href: "/" },
+                  { id: "products", label: "Products", href: "/products" },
+                  { id: "about", label: "About", href: "#" },
+                  { id: "contact", label: "Contact", href: "#" },
                 ].map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.id}
                     to={item.href}
                     className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
                     onClick={() => setMobileMenuOpen(false)}
