@@ -252,7 +252,7 @@ export default function Index() {
               variants={itemVariants}
               className="text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-16"
             >
-              Why Choose TechHub
+              Why Choose anon
             </motion.h2>
 
             {/* Features Grid */}

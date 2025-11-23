@@ -86,17 +86,17 @@ export default function Footer() {
             <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">T</span>
             </div>
-            <span className="font-semibold text-gray-900">TechHub</span>
+            <span className="font-semibold text-gray-900">anon</span>
           </div>
 
           {/* Center - Contact Info */}
           <div className="flex flex-col sm:flex-row items-center gap-6 text-sm text-gray-600">
             <a
-              href="mailto:support@techhub.com"
+              href="mailto:support@anon.com"
               className="flex items-center gap-2 hover:text-gray-900 transition-colors"
             >
               <Mail className="w-4 h-4" />
-              support@techhub.com
+              support@anon.com
             </a>
             <a
               href="tel:+1234567890"
@@ -132,7 +132,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center text-sm text-gray-500 mt-8 pt-8 border-t border-gray-200"
         >
-          &copy; 2024 TechHub. All rights reserved.
+          &copy; 2024 anon. All rights reserved.
         </motion.p>
       </div>
     </footer>

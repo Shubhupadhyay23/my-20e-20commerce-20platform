@@ -24,10 +24,10 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
               className="flex items-center gap-2"
             >
               <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">T</span>
+                <span className="text-white font-bold text-lg">A</span>
               </div>
               <span className="font-semibold text-lg text-gray-900 hidden sm:inline">
-                TechHub
+                anon
               </span>
             </motion.div>
           </Link>
