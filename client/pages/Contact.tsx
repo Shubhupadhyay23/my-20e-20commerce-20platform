@@ -17,7 +17,7 @@ export default function Contact() {
   const heroRef = useScrollAnimation();
   const formRef = useScrollAnimation();
   const infoRef = useScrollAnimation();
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +28,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -94,7 +94,8 @@ export default function Contact() {
             variants={itemVariants}
             className="text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto"
           >
-            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            We'd love to hear from you. Send us a message and we'll respond as
+            soon as possible.
           </motion.p>
         </div>
       </motion.section>

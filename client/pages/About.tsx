@@ -110,10 +110,7 @@ export default function About() {
               </motion.p>
             </motion.div>
 
-            <motion.div
-              variants={itemVariants}
-              className="relative"
-            >
+            <motion.div variants={itemVariants} className="relative">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop"
@@ -212,9 +209,7 @@ export default function About() {
                 variants={itemVariants}
                 className="text-center"
               >
-                <motion.div
-                  className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2"
-                >
+                <motion.div className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
                   {stat.number}
                 </motion.div>
                 <p className="text-lg text-gray-600">{stat.label}</p>
