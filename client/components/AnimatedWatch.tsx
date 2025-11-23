@@ -17,8 +17,9 @@ export default function AnimatedWatch() {
   const rotateVariants = {
     animate: {
       rotateY: [0, 360],
+      rotateZ: [0, 5, -5, 0],
       transition: {
-        duration: 8,
+        duration: 6,
         repeat: Infinity,
         ease: "linear",
       },
@@ -27,16 +28,17 @@ export default function AnimatedWatch() {
 
   const bounceVariants = {
     animate: {
-      y: [0, -20, 0],
+      y: [0, -30, 0],
       transition: {
-        duration: 2,
+        duration: 2.5,
         repeat: Infinity,
         ease: "easeInOut",
+        times: [0, 0.5, 1],
       },
     },
   };
 
-  const parallaxOffset = scrollY * 0.5;
+  const parallaxOffset = scrollY * 0.8;
 
   return (
     <div
